@@ -1,0 +1,283 @@
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 8
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Windows border of 1px
+for_window [class="^.*"] border pixel 1
+
+#---> Start up scripts and applications <---#
+# Setting wallpaper
+exec_always --no-startup-id feh --bg-scale ~/.config/space.jpg
+# Composite manager:
+exec --no-startup-id compton --xrender-sync-fence
+# Polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# mpd startup
+exec --no-startup-id mpd
+# Disables TouchPad
+exec --no-startup-id exec synclient TouchpadOff=1
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec urxvt
+
+# kill focused window
+bindsym $mod+q kill
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec --no-startup-id dmenu_run -b -y 10 -x 13 -w 1892 -nf "$white" -sb "$magenta" -sf "$background" -nb "$background"
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+semicolon split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+bindsym $mod+w          exec --no-startup-id firefox
+bindsym $mod+Shift+w    exec --no-startup-id firefox
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# lock screen
+bindsym $mod+Shift+x exec exec betterlockscreen --lock
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Custom colors
+set_from_resource $black       color8  #000000
+set_from_resource $darkblack   color0  #000000
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $white       color7  #000000
+set_from_resource $darkwhite   color15 #000000
+
+set $background  #e0eaf9
+
+# Window colors           border       background   text            indicator    child_border
+client.focused            $darkmagenta $darkmagenta $darkwhite      $darkgreen	 $darkgreen
+client.focused_inactive   $darkblack   $darkblack   $white          $darkmagenta $darkmagenta
+client.unfocused          $darkblack   $darkblack   $white          $darkmagenta $darkmagenta
+client.urgent 		      $darkblue    $white       $darkblack 	    $darkred   	 $darkred
+
+# i3-gaps
+gaps inner 3
+gaps outer 10
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#        status_command i3status
+#	position top
+#	height 35
+#}
+
+# Enable or disable floating
+for_window [class="feh"] floating enable
+
+# #---Extra XF86 Keys---# #
+# These are the extra media keys that some keyboards have.
+bindsym XF86AudioMute		exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioLowerVolume	exec --no-startup-id pactl set-sink-volume 0 -5%  
+bindsym XF86AudioRaiseVolume 	exec --no-startup-id pactl set-sink-volume 0 +5%
+##bindsym XF86PowerOff		exec 
+##bindsym XF86Copy		exec
+##bindsym XF86Open		exec
+##bindsym XF86Paste		exec
+##bindsym XF86Cut		exec
+##bindsym XF86MenuKB		exec
+##bindsym XF86Calculator	exec 
+##bindsym XF86Sleep		This binding is typically mapped by systemd automatically.
+##bindsym XF86WakeUp		exec
+##bindsym XF86Explorer		exec 
+##bindsym XF86Send		exec
+##bindsym XF86Xfer		exec
+##bindsym XF86WWW		exec --no-startup-id $BROWSER
+##bindsym XF86DOS		exec
+bindsym XF86ScreenSaver		exec exec --no-startup-id lockscreen
+##bindsym XF86RotateWindows	exec
+##bindsym XF86TaskPane		exec
+##bindsym XF86Favorites		exec
+##bindsym XF86MyComputer	exec 
+##bindsym XF86Back		exec
+##bindsym XF86Forward		exec
+bindsym XF86Eject		exec sudo umount -R /mnt
+bindsym XF86AudioNext		exec --no-startup-id mpc next
+bindsym XF86AudioPlay		exec --no-startup-id mpc toggle
+bindsym XF86AudioPrev		exec --no-startup-id mpc prev
+bindsym XF86AudioStop		exec --no-startup-id mpc toggle
+##bindsym XF86AudioRecord
+bindsym XF86AudioRewind		exec --no-startup-id mpc back 10
+bindsym XF86AudioForward	exec --no-startup-id mpc forward 10
+##bindsym XF86Phone		exec
+##bindsym XF86Tools		exec
+##bindsym XF86HomePage		exec 
+bindsym XF86Reload		restart
+##bindsym XF86ScrollUp		exec
+##bindsym XF86ScrollDown	exec
+##bindsym XF86New		exec
+##bindsym XF86LaunchA		exec
+##bindsym XF86LaunchB		exec
+##bindsym XF86Launch2		exec
+##bindsym XF86Launch3		exec
+##bindsym XF86Launch4		exec
+##bindsym XF86Launch5		exec
+##bindsym XF86Launch6		exec
+##bindsym XF86Launch7		exec
+##bindsym XF86Launch8		exec
+##bindsym XF86Launch9		exec
+bindsym XF86AudioMicMute	exec --no-startup-id pactl set-source-mute 1 toggle 
+bindsym XF86TouchpadToggle	exec --no-startup-id ~/.scripts/toggletouchpad.sh 
+bindsym XF86TouchpadOn		exec --no-startup-id synclient TouchpadOff=0
+bindsym XF86TouchpadOff		exec --no-startup-id synclient TouchpadOff=1
+bindsym XF86Suspend		exec --no-startup-id lockscreen
+bindsym XF86Close		kill
+##bindsym XF86WebCam		exec --no-startup-id camtoggle
+##bindsym XF86Mail		exec $term -e neomutt
+##bindsym XF86Messenger		exec $term -e weechat
+##bindsym XF86Search		exec $BROWSER https://duckduckgo.com
+##bindsym XF86Go		exec
+##bindsym XF86Finance		exec
+##bindsym XF86Game		exec
+bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 15
+bindsym XF86MonBrightnessUp	exec --no-startup-id xbacklight -inc 15
+bindsym XF86AudioMedia		exec --no-startup-id st -e ncmpcpp
+bindsym XF86Display		exec --no-startup-id arandr
+#bindsym XF86KbdLightOnOff	exec
+##bindsym XF86Reply		exec
+##bindsym XF86MailForward	exec
+##bindsym XF86Save		exec
+bindsym XF86Documents		exec urxvt -e ranger ~/Documents
+##bindsym XF86Battery		exec
+##bindsym XF86Bluetooth		exec
