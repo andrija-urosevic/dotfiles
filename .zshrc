@@ -42,7 +42,7 @@ autoload -Uz compinit promptinit
 # Init for completion and prompt
 compinit
 promptinit
-PURE_GIT_DOWN_ARROW=''
+PURE_GIT_DOWN_ARROW=''
 PURE_GIT_DOWN_UP=''
 
 # Setting prompt to 'pure'
