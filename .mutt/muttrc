@@ -1,6 +1,7 @@
+source "gpg -dq $HOME/.mutt/pass.gpg |"
 set folder      = imaps://imap.gmail.com/
-set imap_user   = your_email
-set imap_pass   = your_pass
+set imap_user   = andrija.ada99@gmail.com
+set imap_pass   = $my_pass
 set spoolfile   = +INBOX
 mailboxes       = +INBOX
 
