@@ -129,8 +129,9 @@ ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
-ws-icon-4 = 8;
-ws-icon-5 = 9;
+ws-icon-4 = 7;
+ws-icon-5 = 8;
+ws-icon-6 = 9;
 ws-icon-default = 
 
 ; focused = Active workspace on focused monitor

@@ -202,6 +202,11 @@ gaps outer 10
 #	position top
 #	height 35
 #}
+#
+# Assign program to specific workspace
+assign [class="discord"] 7
+assign [class="Wire"] 7
+assign [class="Slack"] 7
 
 # Enable or disable floating
 for_window [class="feh"] floating enable
