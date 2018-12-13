@@ -69,5 +69,5 @@ alias dark='xrdb ~/.Xresurces.dark'
 alias light='xrdb ~/.Xresurces.light'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
-
+#source /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
 

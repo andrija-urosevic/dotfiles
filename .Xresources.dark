@@ -61,7 +61,7 @@ urxvt*dynamicColors: on
 URxvt.transperent: true
 URxvt.depth: 32
 !URxvt.background: [90]#fcf4dc
-URxvt.font: xft:Iosevka:size=12
+URxvt.font: xft:Iosevka:size=12, xtf:PowerlineSymbols:size=12
 URxvt.scrollBar: false
 
 URxvt.perl-ext-common: default,matcher,resize-font,keyboard-select

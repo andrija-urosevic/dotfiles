@@ -248,19 +248,18 @@ endtry
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " --> PARENTHESIS/BRACKET
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap <leader>1 <esc>`>a)<esc>`<i(<esc>
-vnoremap <leader>2 <esc>`>a]<esc>`<i[<esc>
-vnoremap <leader>3 <esc>`>a}<esc>`<i{<esc>
-vnoremap <leader>$ <esc>`>a"<esc>`<i"<esc>
-vnoremap <leader>q <esc>`>a'<esc>`<i'<esc>
-vnoremap <leader>e <esc>`>a"<esc>`<i"<esc>
+vnoremap ( <esc>`>a)<esc>`<i(<esc>
+vnoremap [ <esc>`>a]<esc>`<i[<esc>
+vnoremap { <esc>`>a}<esc>`<i{<esc>
+vnoremap ' <esc>`>a'<esc>`<i'<esc>
+vnoremap " <esc>`>a"<esc>`<i"<esc>
 
-inoremap <leader>1 ()<esc>i
-inoremap <leader>2 []<esc>i
-inoremap <leader>3 {}<esc>i
-inoremap <leader>4 {<esc>o}<esc>i
-inoremap <leader>q ''<esc>i
-inoremap <leader>e ""<esc>i
+inoremap ( ()<esc>i
+inoremap [ []<esc>i
+inoremap { {}<esc>i
+inoremap ' ''<esc>i
+inoremap " ""<esc>i
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -315,7 +314,8 @@ au FileType markdown,rmd inoremap <leader>e **<Esc>i
 au FileType markdown,rmd inoremap <leader>i ![]()<Esc>F[a
 au FileType markdown,rmd inoremap <leader>a []()<Esc>F[a
 au FileType markdown,rmd inoremap <leader>l ---------<CR>
-au FileType markdown,rmd inoremap <leader>t $$<Esc>i
+au FileType rmd inoremap <leader>t $$<Esc>i
+au FileType rmd inoremap <leader>1 ````<Esc>hi
 au FileType rmd inoremap <leader>r ```{r}<CR>```<Esc>ko
 au FileType rmd inoremap <leader>p ```{python}<CR>```<Esc>ko
 au FileType rmd inoremap <leader>c ```<CR>```<Esc>ko
